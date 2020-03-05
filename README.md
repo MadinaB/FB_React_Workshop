@@ -5,3 +5,7 @@ Step 1. Install node.js. Check if node is installed by running
 
 Step 2. Create default app by running
 'npx create-react-app pokedex'
+
+Step 3. 'cd pokedex'
+
+Step 4. 'npm start'
