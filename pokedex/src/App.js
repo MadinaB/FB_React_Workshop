@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
 function App() {
   const pokemon = ["Daniel", "Mike", "Nursultan"]
+
+  const [selectedPokemon, setSelectedPokemon] = useState(null);
+  console.log(selectedPokemon);
 
   console.log(pokemon)
   return (
@@ -12,7 +15,7 @@ function App() {
 	<div className="pokedex-list">
 
 	  {pokemon.map(name => <li key={name}>
-		<button onClick={()=> console.log("Button clicked")}>000 {name}</button>
+		<button onClick={()=> {setSelectedPokemon(name);}}>000 {name}</button>
 	  </li>)}
 
 	</div>
