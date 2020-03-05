@@ -3,22 +3,26 @@ import logo from './logo.svg';
 import './App.css';
 
 function App() {
-  const pokemon = ["Daniel", "Mike", "Nursultan"]
-
+  const [pokemon, setPokemon] = useState([]);
+  fetch("https://pokeapi.co/api/v2/pokemon/?limit=151")
+    .then(response => response.json())
+    .then(data => {
+      console.log(data);
+      setPokemon(data.results)
+    }
+  );
   const [selectedPokemon, setSelectedPokemon] = useState(null);
   console.log(selectedPokemon);
 
-  console.log(pokemon)
   return (
     <div className="App">
       <div className="pokedex">
-	<div className="pokedex-list">
+	     <div className="pokedex-list">
+        {pokemon.map(obj => <li key={obj.name}>
+		        <button className={obj.name === selectedPokemon? "active":""}onClick={()=> {setSelectedPokemon(obj.name);}}>000 {obj.name}</button>
+	           </li>)}
 
-	  {pokemon.map(name => <li key={name}>
-		<button onClick={()=> {setSelectedPokemon(name);}}>000 {name}</button>
-	  </li>)}
-
-	</div>
+	        </div>
       </div>
     </div>
   );
