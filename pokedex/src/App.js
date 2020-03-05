@@ -4,6 +4,8 @@ import './App.css';
 
 function App() {
   const [pokemon, setPokemon] = useState([]);
+  const [details, setDetails] = useState(null);
+  const [selectedPokemon, setSelectedPokemon] = useState(null);
 
   useEffect(() =>{
     fetch("https://pokeapi.co/api/v2/pokemon/?limit=151")
@@ -15,8 +17,15 @@ function App() {
     );
   },[]);
 
-  const [selectedPokemon, setSelectedPokemon] = useState(null);
-  console.log(selectedPokemon);
+  useEffect(() =>{
+    fetch("https://pokeapi.co/api/v2/pokemon/"+selectedPokemon)
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+        setDetails(data)
+      }
+    );
+  },[selectedPokemon]);
 
   return (
     <div className="App">
@@ -27,9 +36,14 @@ function App() {
 	           </li>)}
 
 	        </div>
+          <Image />
       </div>
     </div>
   );
+}
+
+function Image(){
+  return "Display image here"
 }
 
 export default App;
