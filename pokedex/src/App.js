@@ -34,16 +34,23 @@ function App() {
         {pokemon.map(obj => <li key={obj.name}>
 		        <button className={obj.name === selectedPokemon? "active":""}onClick={()=> {setSelectedPokemon(obj.name);}}>000 {obj.name}</button>
 	           </li>)}
-
 	        </div>
-          <Image />
+          <Image source={details !=null ? details.sprites.front_default:""}/>
       </div>
     </div>
   );
 }
 
-function Image(){
-  return "Display image here"
+function Image(props){
+  return (
+    <div className="pokedex-image">
+      "Display image here"
+      <img src={props.source}/>
+    </div>
+  )
+
+
+
 }
 
 export default App;
