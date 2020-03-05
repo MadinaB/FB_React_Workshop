@@ -42,6 +42,7 @@ function App() {
 }
 
 function Image(props){
+  if (!props.source) return null;
   return (
     <div className="pokedex-image">
       "Display image here"
