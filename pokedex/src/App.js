@@ -1,16 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
 function App() {
   const [pokemon, setPokemon] = useState([]);
-  fetch("https://pokeapi.co/api/v2/pokemon/?limit=151")
-    .then(response => response.json())
-    .then(data => {
-      console.log(data);
-      setPokemon(data.results)
-    }
-  );
+
+  useEffect(() =>{
+    fetch("https://pokeapi.co/api/v2/pokemon/?limit=151")
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+        setPokemon(data.results)
+      }
+    );
+  },[]);
+
   const [selectedPokemon, setSelectedPokemon] = useState(null);
   console.log(selectedPokemon);
 
