@@ -12,7 +12,7 @@ function App() {
 	<div className="pokedex-list">
 
 	  {pokemon.map(name => <li key={name}>
-		<button>000 {name}</button>
+		<button onClick={()=> console.log("Button clicked")}>000 {name}</button>
 	  </li>)}
 
 	</div>
